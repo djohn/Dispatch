@@ -58,6 +58,7 @@
     <!-- Begin Content Body -->
     <div id="content">
     	Node: ${node}</br>
+    	ID: ${id}</br>
     	Content: ${content}
     </div>
     <!-- End Content Body -->

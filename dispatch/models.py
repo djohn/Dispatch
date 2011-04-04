@@ -1,42 +1,36 @@
-import transaction
-
-from sqlalchemy import Column
-from sqlalchemy import Integer
-from sqlalchemy import Unicode
-
-from sqlalchemy.exc import IntegrityError
-from sqlalchemy.ext.declarative import declarative_base
-
-from sqlalchemy.orm import scoped_session
-from sqlalchemy.orm import sessionmaker
-
-from zope.sqlalchemy import ZopeTransactionExtension
-
-DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
-Base = declarative_base()
-
-class MyModel(Base):
-    __tablename__ = 'models'
-    id = Column(Integer, primary_key=True)
-    name = Column(Unicode(255), unique=True)
-    value = Column(Integer)
-
-    def __init__(self, name, value):
-        self.name = name
-        self.value = value
-
-def populate():
-    session = DBSession()
-    model = MyModel(name=u'root', value=55)
-    session.add(model)
-    session.flush()
-    transaction.commit()
+class Node:
+    def __init__(self, **kwargs):
+        self.name = None
+        self.parent = None
+        self.content = None
+        self.id = None
+        for key in kwargs:
+            if (key == "name"):
+                self.name = kwargs[key]
+            if (key == "node"):
+                node = kwargs[key]
+                self.id = node['_id']
+                for field in node:
+                    if (field == 'parent'):
+                        self.parent = node['parent']
+                    if (field == 'content'):
+                        self.content = node['content']
+            else:
+                if (key == "_id"):
+                    self.id = kwargs[key]
+                if (key == "parent"):
+                    self.parent = kwargs[key]
+                if (key == "content"):
+                    self.content = kwargs[key]
     
-def initialize_sql(engine):
-    DBSession.configure(bind=engine)
-    Base.metadata.bind = engine
-    Base.metadata.create_all(engine)
-    try:
-        populate()
-    except IntegrityError:
-        DBSession.rollback()
+    def save(self, db):
+        nodedoc = {}
+        if (self.name != None):
+            nodedoc['name'] = self.name
+        if (self.parent != None):
+            nodedoc['parent'] = self.parent
+        if (self.content != None):
+            nodedoc['content'] = self.content
+        if (self.id != None):
+            nodedoc['_id'] = self.id
+        return db.node.save(nodedoc, safe=True)

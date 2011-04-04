@@ -1,9 +1,11 @@
 from pyramid.response import Response
+from dispatch.models import *
 
 def home(request):
-    content = request.db.node.find_one({"name":"Test"})
-    return {'node':'Test', 'content':content['content']}
+    node = Node('Test', node=request.db.node.find_one({"name":"Test"}))
+    return {'node':node.name, 'id':str(node.id), 'content':node.content}
 
 def init(request):
-    request.db.node.insert({"node":"Test", "content":"Some DB Content"})
+    newNode = Node('Test', content='Some coded DB content')
+    newNode.save(request.db)
     return Response("OK")
