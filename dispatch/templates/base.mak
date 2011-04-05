@@ -1,4 +1,3 @@
-<!doctype html> 
 <html> 
   <head> 
   	<link href="http://fonts.googleapis.com/css?family=Oswald:regular" rel="stylesheet" type="text/css" > 
@@ -57,9 +56,7 @@
     <!-- End Nav Body -->
     <!-- Begin Content Body -->
     <div id="content">
-    	Node: ${node}</br>
-    	ID: ${id}</br>
-    	Content: ${content}
+    
     </div>
     <!-- End Content Body -->
   </body> 
