@@ -22,9 +22,9 @@ def view_node(request):
         
     if (dbnode != None):
         n = Node(node=dbnode)
-        return {'nodes':({'name':str(n.name), '_id':str(n.id)}, {'name':str(n.name), '_id':str(n.id)})}
+        return {'nodes':[{'name':str(n.name), '_id':str(n.id)}]}
     else:
-        return {'nodes':({'name':'No Node Found.', '_id':'Try entering a different Id, check that the Id is valid, or check the database.'})}
+        return {'nodes':[{'name':'No Node Found.', '_id':'Try entering a different Id, check that the Id is valid, or check the database.'}]}
 
 
 # <!-- Development Views

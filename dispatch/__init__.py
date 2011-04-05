@@ -13,8 +13,8 @@ def main(global_config, **settings):
     config.scan('dispatch')
     config.registry.mongo_conn = pymongo.Connection(settings['db_address'], int(settings['db_port']))
     config.add_static_view('static', 'dispatch:static')
-    config.add_route('home', '/', view='dispatch.views.home', renderer="templates/navmaster.mak")
-    config.add_route('view_node', '/node/{node}', view='dispatch.views.view_node', renderer="templates/navmaster.mak")
+    config.add_route('home', '/', view='dispatch.views.home', renderer="home.mak")
+    config.add_route('view_node', '/node/{node}', view='dispatch.views.view_node', renderer="node.mak")
     
     # Development Routes
     config.add_route('initdb', '/init', view='dispatch.views.init')

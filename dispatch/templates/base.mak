@@ -36,19 +36,22 @@
     <img src="${request.static_url('dispatch:static/dotBar.png')}"> 
     </a> 
     <ul> 
-    	<li class="section-title" id="about">About</li> 
-    	<ul class="submenu" id="about"></ul> 
-    	<li class="section-title" id="projects">Projects</li> 
-    	<ul class="submenu" id="projects"> 
-    		<li><a href="./dispatch.html">Dispatch</a></li> 
+      <li class="section-title" id="about">About</li> 
+	<ul class="submenu" id="about">
+	  <li>Mission</li>
+	  <li>MV Scenic</li>
+	</ul> 
+      <li class="section-title" id="projects">Projects</li> 
+	<ul class="submenu" id="projects"> 
+    	  <li><a href="${request.route_url('home')}">Dispatch</a></li> 
     	</ul> 
-    	<li class="section-title" id="releases">Releases</li> 
+      <li class="section-title" id="releases">Releases</li> 
     	<ul class="submenu" id="releases"> 
-    		<li>Coming Soon</li> 
+    	  <li>Coming Soon</li> 
     	</ul> 
-    	<li class="section-title" id="devs">Developers</li> 
+      <li class="section-title" id="devs">Developers</li> 
     	<ul class="submenu" id="devs"></ul> 
-    	<li class="section-title">Contact</li> 
+      <li class="section-title">Contact</li> 
     </ul> 
     </ul> 
     </div> 
@@ -56,7 +59,7 @@
     <!-- End Nav Body -->
     <!-- Begin Content Body -->
     <div id="content">
-    
+      ${self.body()}
     </div>
     <!-- End Content Body -->
   </body> 

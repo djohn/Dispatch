@@ -1,6 +1,6 @@
 body  {
 	background-color: #fff;
-	width: 100%;
+	width: 95%;
 	font-size: 100%;
 	  }
    	  
@@ -84,7 +84,7 @@ body  {
 }
 		   
 #content {
-    margin-left: 250px;
+    margin-left: 200px;
     margin-bottom: 0;
     margin-right: 0;
     margin-top: 25px;
@@ -95,8 +95,15 @@ body  {
 		 }
 
 #content img {
-	border: 5;
-	border-color: gray;
 	padding-right:100px;
+}
+
+#content li {
+	padding: 2px;
+	margin: 2px;
+	border-style: inset;
+	border-width: 5px;
+	border-color: #98bf21;
+	list-style: none;
 }
 
