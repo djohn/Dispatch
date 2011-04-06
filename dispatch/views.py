@@ -3,6 +3,8 @@ from dispatch.models import *
 from pymongo.objectid import ObjectId
 from pymongo.errors import InvalidId
 
+# 'nc' is the preferred shorthand for the 'Node' collection in the database.
+
 def home(request):
     nc = request.db.node
     nodes = []
@@ -16,13 +18,18 @@ def view_node(request):
     try:
         nid = ObjectId(str(request.matchdict['node']))
     except InvalidId:
-        dbnode = None
+        nid = None
     else:
-        dbnode = nc.find_one({"_id":nid})
-        
-    if (dbnode != None):
+        node = Node(db=request.db, id=nid)
+    
+    if (nid != None):
         n = Node(node=dbnode)
-        return {'nodes':[{'name':str(n.name), '_id':str(n.id)}]}
+        ndict = {}
+        
+        ndict
+        
+        
+        return {}
     else:
         return {'nodes':[{'name':'No Node Found.', '_id':'Try entering a different Id, check that the Id is valid, or check the database.'}]}
 
@@ -34,11 +41,11 @@ def init(request):
     nsId1 = newShout.save(request.db)
     nsId2 = newShout.save(request.db)
     nsId3 = newShout.save(request.db)
-    subNode = Node(name='Thread', content=[{'type':'shout', 'id':nsId1, 'flag':'active'},
-                                           {'type':'shout', 'id':nsId2, 'flag':'active'}])
+    subNode = Node(name='Thread', content=[{'type':'shout', '_id':nsId1, 'flag':'active'},
+                                           {'type':'shout', '_id':nsId2, 'flag':'active'}])
     subnodeId = subNode.save(request.db)
-    newNode = Node(name='Test', content=[{'type':'node', 'id':subnodeId, 'flag':'active'},
-                                         {'type':'shout', 'id':nsId3, 'flag':'active'}])
+    newNode = Node(name='Test', content=[{'type':'node', '_id':subnodeId, 'flag':'active'},
+                                         {'type':'shout', '_id':nsId3, 'flag':'active'}])
     newNode.save(request.db)
     return Response("OK")
 

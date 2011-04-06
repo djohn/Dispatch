@@ -29,9 +29,9 @@ body  {
 #menubg {
 	background-color:#90b6db;
 	filter:alpha(opacity=60);
-    -moz-opacity:0.6;
-    -khtml-opacity: 0.6;
-    opacity: 0.6;
+	-moz-opacity:0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
 }
 
 #menu a { text-decoration: none; }
@@ -45,6 +45,7 @@ body  {
 #menu ul img {
 	padding-left: 1px;
 	padding-bottom: 3px;
+	padding-top: 4px;
 	width: 184px;
 }
 
@@ -77,10 +78,14 @@ body  {
 	margin: 0 0 0 0;
 }
 
-.submenu { display: none; }
+.submenu { height: 0;
+	   overflow: hidden;
+	 }
 .submenu li,
 .submenu li a {
 	color:#d77600;
+	font-size: 22px;
+	letter-spacing: normal;
 }
 		   
 #content {

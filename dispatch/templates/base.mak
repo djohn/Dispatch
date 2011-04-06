@@ -4,56 +4,45 @@
   	<link rel='stylesheet' href="${request.static_url('dispatch:static/style.css')}" type='text/css' /> 
     <meta charset="utf-8"> 
     <title>Floating Post Developers | Victoria, BC</title> 
-  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js"></script> 
-  	<script type="text/javascript"> 
-  		$(document).ready(function () {
-  			$('#about.section-title').click(function () { 
-				$('#about.submenu').slideToggle('medium');
-  			});
-  			$('#projects.section-title').click(function () { 
-				$('#projects.submenu').slideToggle('medium');
-  			});
-  			$('#releases.section-title').click(function () { 
-				$('#releases.submenu').slideToggle('medium');
-  			});
-  			$('#devs.section-title').click(function () { 
-				$('#devs.submenu').slideToggle('medium');
-  			});
-  		});
-  	</script> 
+  	<script src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="${request.static_url('dispatch:static/menuanim.js')}"></script>
   </head> 
   <body>
   	<!-- Begin Nav Body -->
     <div id="menubg"></div> 
     <div id="menu"> 
     <div class="container"> 
-    <a href="${request.application_url}"> 
-    <img src="${request.static_url('dispatch:static/logo.png')}"> 
-    <ul> 
-    <img src="${request.static_url('dispatch:static/dotBar.png')}"> 
-    <li class="site-title1">Floating</li> 
-    <li class="site-title2">Post.Devs</li> 
-    <img src="${request.static_url('dispatch:static/dotBar.png')}"> 
-    </a> 
-    <ul> 
-      <li class="section-title" id="about">About</li> 
-	<ul class="submenu" id="about">
-	  <li>Mission</li>
-	  <li>MV Scenic</li>
-	</ul> 
-      <li class="section-title" id="projects">Projects</li> 
-	<ul class="submenu" id="projects"> 
-    	  <li><a href="${request.route_url('home')}">Dispatch</a></li> 
-    	</ul> 
-      <li class="section-title" id="releases">Releases</li> 
-    	<ul class="submenu" id="releases"> 
-    	  <li>Coming Soon</li> 
-    	</ul> 
-      <li class="section-title" id="devs">Developers</li> 
-    	<ul class="submenu" id="devs"></ul> 
-      <li class="section-title">Contact</li> 
-    </ul> 
-    </ul> 
+      <a href="${request.application_url}"> 
+	<img src="${request.static_url('dispatch:static/logo.png')}"> 
+	<ul> 
+	<img src="${request.static_url('dispatch:static/dotBar.png')}"> 
+        <li class="site-title1">Floating</li> 
+        <li class="site-title2">Post.Devs</li> 
+        <img src="${request.static_url('dispatch:static/dotBar.png')}">
+      </a> 
+      <ul> 
+        <li class="section-title" id="about">About</br>
+	  <ul class="submenu">
+	    <li>Mission</li>
+	    <li>MV Scenic</li>
+	  </ul>
+        </li> 
+        <li class="section-title" id="projects">Projects</br>
+	  <ul class="submenu"> 
+      	  <li><a href="${request.route_url('home')}">Dispatch</a></li> 
+      	</ul>
+        </li>
+        <li class="section-title" id="releases">Releases</br> 
+      	<ul class="submenu"> 
+      	  <li>Coming Soon</li> 
+      	</ul>
+        </li>
+        <li class="section-title" id="devs">Developers</br> 
+      	<ul class="submenu"></ul>
+        </li>
+        <li class="section-title">Contact</li> 
+      </ul> 
+      </ul> 
     </div> 
     </div>
     <!-- End Nav Body -->
