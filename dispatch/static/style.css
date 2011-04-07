@@ -86,6 +86,7 @@ body  {
 	color:#d77600;
 	font-size: 22px;
 	letter-spacing: normal;
+	vertical-align: bottom;
 }
 		   
 #content {
@@ -103,7 +104,7 @@ body  {
 	padding-right:100px;
 }
 
-#content li {
+#content.node {
 	padding: 2px;
 	margin: 2px;
 	border-style: inset;
