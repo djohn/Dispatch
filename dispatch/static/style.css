@@ -90,11 +90,14 @@ body  {
 }
 		   
 #content {
-    margin-left: 216px;
-    margin-bottom: 0;
-    margin-right: 10px;
-    margin-top: 8px;
-    top: 0;
-   	white-space: nowrap;
+	margin-left: 216px;
+	margin-bottom: 0;
+	margin-right: 10px;
+	margin-top: 8px;
+	top: 0;
    	font-family: Helvetica;
 	 }
+
+#contentNode {
+	width: 100%
+}

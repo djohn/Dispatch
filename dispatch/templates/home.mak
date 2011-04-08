@@ -47,8 +47,14 @@
 			    // Send the username to check base on an INPUT node's value
 			    content: { id : value },
 			    // The success callback with result from server
-			    load: function(jsonData) {
-			        contentNode.innerHTML = JSON.stringify(jsonData);
+			    load: function(jsonNode) {
+				var content = "";
+				node = dojo.fromJson(jsonNode);
+				
+				content+= "<h2>" + node.name + "</h2>";
+				content+= "<h3>" + node._id + "</h3>";
+				
+			        contentNode.innerHTML = content;
 			    }
 			});
 		    }

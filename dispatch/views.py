@@ -12,7 +12,7 @@ def home(request):
         nodes.append(n)
     
     return {'nodes': nodes}
-
+    
 def view_node(request):
     nc = request.db.node
     try:
