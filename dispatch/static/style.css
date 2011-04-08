@@ -1,6 +1,6 @@
 body  {
 	background-color: #fff;
-	width: 95%;
+	width: 99%;
 	font-size: 100%;
 	  }
    	  
@@ -90,26 +90,11 @@ body  {
 }
 		   
 #content {
-    margin-left: 200px;
+    margin-left: 216px;
     margin-bottom: 0;
-    margin-right: 0;
-    margin-top: 25px;
-    height: 100%;
+    margin-right: 10px;
+    margin-top: 8px;
     top: 0;
    	white-space: nowrap;
    	font-family: Helvetica;
-		 }
-
-#content img {
-	padding-right:100px;
-}
-
-#content.node {
-	padding: 2px;
-	margin: 2px;
-	border-style: inset;
-	border-width: 5px;
-	border-color: #98bf21;
-	list-style: none;
-}
-
+	 }

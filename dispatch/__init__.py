@@ -15,6 +15,7 @@ def main(global_config, **settings):
     config.add_static_view('static', 'dispatch:static')
     config.add_route('home', '/', view='dispatch.views.home', renderer="home.mak")
     config.add_route('view_node', '/node/{node}', view='dispatch.views.view_node', renderer="node.mak")
+    config.add_route('request', '/request', view='dispatch.requests.request_handler', renderer='json')
     
     # Development Routes
     config.add_route('initdb', '/init', view='dispatch.views.init')

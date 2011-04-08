@@ -1,10 +1,11 @@
 <html> 
   <head> 
   	<link href="http://fonts.googleapis.com/css?family=Oswald:regular" rel="stylesheet" type="text/css" > 
-  	<link rel='stylesheet' href="${request.static_url('dispatch:static/style.css')}" type='text/css' /> 
+  	<link rel='stylesheet' href="${request.static_url('dispatch:static/style.css')}" type='text/css' />
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dijit/themes/claro/claro.css"/>
     <meta charset="utf-8"> 
     <title>Floating Post Developers | Victoria, BC</title> 
-  	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js"></script>
+  	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script>
 	<script type="text/javascript" src="${request.static_url('dispatch:static/ready.js')}"></script>
   </head> 
   <body>
