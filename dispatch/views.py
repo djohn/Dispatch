@@ -6,12 +6,8 @@ from pymongo.errors import InvalidId
 # 'nc' is the preferred shorthand for the 'Node' collection in the database.
 
 def home(request):
-    nc = request.db.node
-    nodes = []
-    for n in nc.find():
-        nodes.append(n)
     
-    return {'nodes': nodes}
+    return {}
     
 def view_node(request):
     nc = request.db.node
@@ -37,16 +33,10 @@ def view_node(request):
 # <!-- Development Views
 
 def init(request):
-    newShout = Shout()
-    nsId1 = newShout.save(request.db)
-    nsId2 = newShout.save(request.db)
-    nsId3 = newShout.save(request.db)
-    subNode = Node(name='Thread', content=[{'type':'shout', '_id':nsId1, 'flag':'active'},
-                                           {'type':'shout', '_id':nsId2, 'flag':'active'}])
-    subnodeId = subNode.save(request.db)
-    newNode = Node(name='Test', content=[{'type':'node', '_id':subnodeId, 'flag':'active'},
-                                         {'type':'shout', '_id':nsId3, 'flag':'active'}])
-    newNode.save(request.db)
+    m = Node(name="Mike")
+    d = Node(name="Doug")
+    request.db.node.save(m.__dict__)
+    request.db.node.save(d.__dict__)   
     return Response("OK")
 
 def drop(request):

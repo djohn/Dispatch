@@ -3,6 +3,11 @@ body  {
 	width: 99%;
 	font-size: 100%;
 	  }
+	  
+strong {
+	font-family: Helvetica, Arial, sans-serif;
+	line-height: 30px;
+}
    	  
 .container {
 	z-index: 0;
@@ -13,7 +18,7 @@ body  {
 		   }
 	 
 #menu, #menubg {
-    font-family: 'Oswald', Arial, Helvetica, sans-serif;
+    font-family: 'Oswald', Helvetica, Arial, sans-serif;
     letter-spacing: 1px;
     left: 15px;
     text-align: left;

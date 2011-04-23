@@ -9,6 +9,11 @@
 	<script type="text/javascript">
 	    dojo.require("dojo.fx");
 	    dojo.require("dojo.window");
+	    dojo.require("dijit.form.Form");
+	    dojo.require("dijit.form.TextBox");
+	    dojo.require("dijit.form.FilteringSelect");
+	    dojo.require("dijit.form.Textarea");
+	    dojo.require("dijit.form.Button");
 
 	    dojo.ready(function(){
 	        var sections = dojo.query(".section-title");
@@ -30,34 +35,16 @@
 		    dojo.toggleClass(evt.target, "dojo-open");
 		});
 		
-		var contentNode = dojo.byId("contentNode"),
-		    inputNode = dojo.byId("nodeIdInput");
+		var myForm = dijit.byId("addShout");
 		
-		dojo.connect(inputNode, "onkeypress", function(evt){
-		    if (evt.keyCode == 13) {
-			var value = dojo.trim(inputNode.value);
-			
-			dojo.xhrGet({
-			    // The URL of the request
-			    url: "${request.route_path('request')}",
-			    // Allow only 2 seconds for username check
-			    timeout: 2000,
-			    // Expect JSON response
-			    handleAs: "json",
-			    // Send the username to check base on an INPUT node's value
-			    content: { id : value },
-			    // The success callback with result from server
-			    load: function(jsonNode) {
-				var content = "";
-				node = dojo.fromJson(jsonNode);
-				
-				content+= "<h2>" + node.name + "</h2>";
-				content+= "<h3>" + node._id + "</h3>";
-				
-			        contentNode.innerHTML = content;
-			    }
-			});
-		    }
+		dojo.connect(myForm, "onSubmit", function(e) {
+		    dojo.stopEvent(e);
+		    jform = dojo.toJson(myForm.getValues());
+		    dojo.xhrPost({
+			url: "${request.route_url('request', action='add_shout')}",
+			handleAs: "json",
+			content: myForm.getValues()
+		    });
 		});
 	    })
 	</script>
@@ -102,11 +89,38 @@
     <!-- End Nav Body -->
     <!-- Begin Content Body -->
     <div id="content">
-	<div>
-	<strong>Node Id:  </strong>
-	<input type="text" id="nodeIdInput" size="1em" style="width: 24em; font-family: Helvetica"/> 
-	</div>
-	<div id="contentNode"> 
+	<div style="border: 5px inset #98bf21;padding:3px;width:400px;">
+	    <div dojoType="dijit.form.Form" id="addShout" jsId="addShout" enctype=multipart/form-data charset=utf8 action="" method="">
+		<div style="width:100%">
+			<!-- text inputs:  dijit.form.TextBox -->
+			<strong>Subject: </strong>
+			<input type="text" style="width: 100%" name="name" placeholder="New Shout" id="shoutName" dojotype="dijit.form.TextBox">
+		</div>
+		<div style="width:100%">
+			<strong>Owner Id:  </strong>
+			<input type="text" style="width: 100%" name="owner" placeholder="ObjectId" id="shoutParent" dojotype="dijit.form.TextBox">
+		</div>    
+		<div style="width:100%">
+			<!-- radio buttons:  dijit.form.FilteringSelect -->
+			<strong>Access: </strong>
+			<select name="access" id="shoutAccess" style="width: 100%" dojotype="dijit.form.FilteringSelect">
+			<option value="public">Public</option>
+			<option value="private">Private</option>
+			</select>
+		</div>	
+		<div style="width:100%">
+			<strong>Recievership: </strong>
+			<textarea id="shoutRecievership" name="recipients" dojoType="dijit.form.Textarea" style="width:100%;"></textarea>
+		</div>
+		<div style="width:100%">
+			<strong>Content: </strong>
+			<textarea id="shoutContent" name="content" dojoType="dijit.form.Textarea" style="width:100%;"></textarea>
+		</div>
+		<div style="width:100%">
+			<!-- submit button:  dijit.form.Button -->
+			<input type="submit" value="Submit Form" label="Submit Shout" id="submitButton" dojotype="dijit.form.Button">
+		</div>
+	    </div>
 	</div>
     </div>
     <!-- End Content Body -->
