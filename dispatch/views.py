@@ -8,29 +8,17 @@ from pymongo.errors import InvalidId
 def home(request):
     
     return {}
-    
-def view_node(request):
-    nc = request.db.node
-    try:
-        nid = ObjectId(str(request.matchdict['node']))
-    except InvalidId:
-        nid = None
-    else:
-        node = Node(db=request.db, id=nid)
-    
-    if (nid != None):
-        n = Node(node=dbnode)
-        ndict = {}
-        
-        ndict
-        
-        
-        return {}
-    else:
-        return {'nodes':[{'name':'No Node Found.', '_id':'Try entering a different Id, check that the Id is valid, or check the database.'}]}
 
+# Request Frontend Views
+def add_shout(request):
 
-# <!-- Development Views
+    return {}
+
+# Development Views
+def view_all(request):
+    documents = request.db.node.find({}, {'_id' : 1})
+    
+    return 
 
 def init(request):
     m = Node(name="Mike")
@@ -41,5 +29,3 @@ def init(request):
 
 def drop(request):
     return Response(str(request.db.node.drop()))
-
-# --!>

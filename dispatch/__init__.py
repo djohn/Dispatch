@@ -17,12 +17,16 @@ def main(global_config, **settings):
     config.add_route('home', '/',
                      view='dispatch.views.home',
                      renderer="home.mak")
-    config.add_route('view_node', '/node',
-                     view='dispatch.views.view_node',
-                     renderer="node.mak")
     config.add_route('request', '/request/{action}',
                      view='dispatch.requests.request',
                      renderer='mongo_json')
+    config.add_route('view_all', '/view_all',
+				     view='dispatch.views.view_all',
+				     renderer='mongo_json')
+	# Request Frontend Routes
+    config.add_route('add_shout', '/add_shout',
+                     view='dispatch.views.add_shout',
+                     renderer="addshout.mak")
     
     # Development Routes
     config.add_route('initdb', '/init', view='dispatch.views.init')

@@ -6,7 +6,31 @@
     <meta charset="utf-8"> 
     <title>Floating Post Developers | Victoria, BC</title> 
   	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script>
-	<script type="text/javascript" src="${request.static_url('dispatch:static/ready.js')}"></script>
+	<script type="text/javascript">
+	    dojo.require("dojo.fx");
+	    dojo.require("dojo.window");
+
+	    dojo.ready(function(){
+	        var sections = dojo.query(".section-title");
+    
+			sections.connect("onclick", function(evt){
+		    	var sub = dojo.query('.submenu', evt.target)[0],
+		    	dest = '';
+	      	
+		    	if (dojo.hasClass(evt.target, "dojo-open")) {
+		        	dest = 0;
+		    	} else {
+		        	dest = dojo.query('li', sub).length * 28;
+		    	}
+	      
+		    	dojo.animateProperty({
+		        	node: sub,
+		        	properties: { height: dest }
+		        	}).play();
+		    	dojo.toggleClass(evt.target, "dojo-open");
+			});
+	    })
+	</script>
   </head> 
   <body>
   	<!-- Begin Nav Body -->
