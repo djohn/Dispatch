@@ -1,3 +1,4 @@
+from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from pyramid.config import Configurator
 from pyramid.events import subscriber
 from pyramid.events import NewRequest
@@ -6,9 +7,11 @@ from pymongo import Connection
 from gridfs import GridFS
 
 def main(global_config, **settings):
-    """ This function returns a Pyramid WSGI application.
-    """
-    config = Configurator(settings=settings)
+    """ This function returns a Pyramid WSGI application."""
+
+    session_factory = UnencryptedCookieSessionFactoryConfig('chuckNorris')
+
+    config = Configurator(settings=settings, session_factory=session_factory)
     config.scan('dispatch')
     config.registry.mongo_conn = Connection(settings['db_address'],
                                             int(settings['db_port']))
